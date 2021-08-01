@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵jukebox🎵</title>
+</head>
+<body>
+    <h1 id="1">Random Song</h1>
+    <audio src="" type="audio/mp3" id="fav1"  controls autoplay loop></audio>
+    <h2>Names List</h2>
+    <ul id="list"></ul>
+    <h1 id="2">Fav Song Of Person</h1>
+    <audio src="" id="fav2" controls ></audio>
+    <script>
+        //songs list
+        const songs=[{person:'monica', name:'sunflower',src:'music/Sunflower.mp3'},{person:'chandler',name:'republic',src:'music/one republic.mp3'},
+        {person:'joey', name:'hoyna',src:'music/Hoyna Hoyna.mp3'},{person:'sheldon', name:'i like me better',src:'music/I_Like_Me_Better.mp3'},
+        {person:'amy',name:'its my life',src:'music/Its_My_Life.mp3'},{person:'lenord',name:'chalore',src:'music/Chalore_Chalore.mp3'},
+        {person:'penny',name:'fight song',src:'music/Fight Song.mp3'},{person:'eleven',name:'taare ginn',src:'music/Taare Ginn.mp3'}]
+        //Random Song On Page load
+            const songBg=document.getElementById('fav1')
+            const num=Math.floor(Math.random()*songs.length)
+            songBg.setAttribute('src',`${songs[num].src}`)
+            
+        //List Creation     
+        const ul=document.getElementById('list')
+        songs.forEach(function(ele){
+            const head2=document.getElementById('2')
+            const li=document.createElement('li')
+            li.textContent=ele.person
+            ul.appendChild(li)
+            //Eventlistener on click of list item
+            const songBg1=document.getElementById('fav2')
+            li.addEventListener('click',function(){
+                songBg1.setAttribute('src',`${ele.src}`)
+                head2.textContent=`Favourite Song Of ${ele.person}`
+            })
+            
+        })
+
+            
+        
+    
+
+    </script>
+</body>
+</html>
